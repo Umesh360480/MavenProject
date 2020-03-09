@@ -1,7 +1,6 @@
 package Framework.MavenProject;
 
-import java.io.FileReader;
-import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -29,7 +28,9 @@ public class BaseTest {
 		readExcel = new ExcelReader(ReadProperty.getTestDataExcelPath(),ReadProperty.getSheetName());
 		if(ReadProperty.getBrowserName().equalsIgnoreCase(browserName.Firefox.toString())) {
 		System.setProperty("webdriver.gecko.driver",ReadProperty.getFirefoxExecutablePath());
-		driver = new FirefoxDriver();			
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		}
 	}	
 	@Test
