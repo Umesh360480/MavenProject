@@ -1,0 +1,7 @@
+pages\BasePage.class
+pages\LoginPage.class
+resources\browserName.class
+pages\HomePage.class
+resources\ReadProperty.class
+Framework\MavenProject\App.class
+resources\ExcelReader.class
