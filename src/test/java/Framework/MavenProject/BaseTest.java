@@ -18,8 +18,6 @@ import resources.browserName;
 
 public class BaseTest {
 
-	Properties prop;
-	FileReader reader;
 	LoginPage objLoginPage;
 	WebDriver driver;
 	HomePage objHomePage;
@@ -27,9 +25,7 @@ public class BaseTest {
 
 	@BeforeSuite
 	public void initializeResource() throws Throwable {
-//		reader = new FileReader("C:\\Automation\\Practise\\MavenProject\\GlobalData.properties");
-//		prop = new Properties();
-//		prop.load(reader);
+		ReadProperty.init();
 		readExcel = new ExcelReader(ReadProperty.getTestDataExcelPath(),ReadProperty.getSheetName());
 		if(ReadProperty.getBrowserName().equalsIgnoreCase(browserName.Firefox.toString())) {
 		System.setProperty("webdriver.gecko.driver",ReadProperty.getFirefoxExecutablePath());

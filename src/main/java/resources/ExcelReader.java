@@ -58,7 +58,7 @@ public class ExcelReader {
 		return data;
 	}
 
-	public String getDataFromRow(int rowIndex,String columnName) {
+	public String getDataFromRow(int rowIndex, String columnName) {
 		String data = null;
 		int celIndex;
 		Iterator<Row> rows = wb.getSheet(requiredSheet).rowIterator();

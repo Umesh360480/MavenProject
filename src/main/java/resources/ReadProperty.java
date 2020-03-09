@@ -1,8 +1,5 @@
 package resources;
-
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Properties;
 
 public class ReadProperty {
@@ -10,15 +7,13 @@ public class ReadProperty {
 	static FileReader reader;
 	static Properties prop;
 
-	ReadProperty() throws Throwable {
-		 reader = new FileReader("C:\\Automation\\Practise\\MavenProject\\GlobalData.properties");
-		 prop = new Properties(); 
-		 prop.load(reader);
-		 
+	public static void init() throws Throwable {
+		reader = new FileReader(getProjectDirectory().concat("\\GlobalData.properties"));
+		prop = new Properties();
+		prop.load(reader);
 	}
 
-	public static String getBaseURL() {
-		System.out.println(prop.getProperty("baseURL").toString());
+	public static String getBaseURL() {			
 		return prop.getProperty("baseURL").toString();
 	}
 
@@ -27,25 +22,18 @@ public class ReadProperty {
 	}
 
 	public static String getFirefoxExecutablePath() {
-		return prop.getProperty("firefoxExecutablePath").toString();
+		return getProjectDirectory().concat(prop.getProperty("firefoxExecutablePath").toString());
 	}
 
 	public static String getTestDataExcelPath() {
-		try {
-			reader = new FileReader("C:\\Automation\\Practise\\MavenProject\\GlobalData.properties");
-			prop = new Properties();
-			prop.load(reader);
-		} catch (FileNotFoundException fe) {
-			// TODO Auto-generated catch block
-			fe.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return prop.getProperty("testDataExcelPath").toString();
+		return getProjectDirectory().concat(prop.getProperty("testDataExcelPath").toString());
 	}
 
 	public static String getSheetName() {
 		return prop.getProperty("sheetName").toString();
+	}
+
+	public static String getProjectDirectory() {
+		return System.getProperty("user.dir").toString();
 	}
 }
