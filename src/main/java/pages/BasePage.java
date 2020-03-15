@@ -17,12 +17,11 @@ public class BasePage {
 	public void clickBackward() {
 		driver.navigate().back();
 	}
-
-	public void test() {
-
-		System.out.println("Hello World");
-		System.out.println("changed");
-
+	public void accept() {
+		driver.switchTo().alert().accept();
+	}
+	public void dismiss() {
+		driver.switchTo().alert().dismiss();
 	}
 
 }

@@ -36,4 +36,16 @@ public class ReadProperty {
 	public static String getProjectDirectory() {
 		return System.getProperty("user.dir").toString();
 	}
+	public static String getScreenshotDirectory() {
+		return getProjectDirectory().concat(prop.getProperty("latestScreenshotPath"));
+	}
+	public static String getArchiveScreenshotDirectory() {
+		return getProjectDirectory().concat(prop.getProperty("archiveScreenshotPath"));
+	}
+	public static String getLatestReportPath() {
+		return getProjectDirectory().concat(prop.getProperty("latestReportPath"));
+	}
+	public static String getArchiveReportsPath() {
+		return getProjectDirectory().concat(prop.getProperty("archiveReportsPath"));
+	}
 }

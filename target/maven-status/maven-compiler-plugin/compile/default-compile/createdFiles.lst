@@ -1,3 +1,4 @@
+resources\Capture.class
 pages\BasePage.class
 pages\LoginPage.class
 resources\browserName.class
