@@ -9,8 +9,8 @@
           <include name="closeConnections"/>
           <include name="launchURL"/>
           <include name="login"/>
-          <include name="getStatus"/>
           <include name="initializeResource"/>
+          <include name="afterMethod"/>
         </methods>
       </class> <!-- tests.BaseTest -->
     </classes>

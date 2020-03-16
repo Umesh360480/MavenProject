@@ -26,6 +26,7 @@ import com.google.common.io.Files;
 
 import pages.HomePage;
 import pages.LoginPage;
+import resources.Capture;
 import resources.ExcelReader;
 import resources.ReadProperty;
 import resources.browserName;
@@ -51,7 +52,6 @@ public class BaseTest {
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		}
 		htmlReport = new ExtentHtmlReporter(ReadProperty.getLatestReportPath().concat(getReportName()));
-
 		htmlReport.config().setAutoCreateRelativePathMedia(true);
 		htmlReport.config().setCSS("css-string");
 		htmlReport.config().setDocumentTitle("Captue Automation");
@@ -61,29 +61,51 @@ public class BaseTest {
 		htmlReport.config().setReportName("build name");
 		htmlReport.config().setTheme(Theme.DARK);
 		htmlReport.config().setTimeStampFormat("MMM dd, yyyy HH:mm:ss");
-
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReport);
 		extent.setSystemInfo("BrowserName", ReadProperty.getBrowserName());
 		extent.setSystemInfo("OS", System.getenv("OS"));
 	}
 
+	public static void createTest(String testName) {
+		test = extent.createTest(testName);
+	}
+
+	@AfterMethod
+	public static void afterMethod(ITestResult result) throws Throwable {
+		if (result.getStatus() == ITestResult.FAILURE) {
+
+			test.log(Status.FAIL, result.getName() + " test is Failed");
+			test.log(Status.FAIL, result.getThrowable());
+			test.addScreenCaptureFromPath(Capture.screenshot(driver, getReportName()));
+
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+
+			test.log(Status.PASS, result.getName() + " is passed");
+		}
+		if (result.getStatus() == ITestResult.SKIP) {
+			test = extent.createTest(result.getName());
+			test.log(Status.SKIP, result.getName() + " is skipped");
+			test.log(Status.SKIP, result.getThrowable());
+		}
+	}
+
 	@Test
 	public static void launchURL() {
 		driver.get(ReadProperty.getBaseURL());
+		test.log(Status.INFO, "Navigating to the Base URL");
+		test.log(Status.INFO, "Maximizing the browser window");
 		driver.manage().window().maximize();
 	}
 
 	@Test(dependsOnMethods = "launchURL")
 	public static void login() {
-		test = extent.createTest("Login Test");
 		test.log(Status.INFO, "Login Test started");
 		objLoginPage = new LoginPage(driver);
 		test.log(Status.INFO, "User Credentials reading from excel");
 		objHomePage = objLoginPage.loginUser(readExcel.getData("Username"), readExcel.getData("Password"));
 		Assert.assertTrue(objHomePage.getUserName().contains(readExcel.getData("Username")), "User not logged");
 		test.log(Status.INFO, "Login Test ended");
-		// test.log(Status.PASS, "User logged in successfully");
 	}
 
 	@Test(dataProvider = "LoginDetails", enabled = false)
@@ -100,27 +122,6 @@ public class BaseTest {
 
 	}
 
-	@AfterMethod
-	public static void getStatus(ITestResult result) {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			test = extent.createTest(result.getName());
-			test.log(Status.FAIL, result.getName() + " test is Failed");
-			test.log(Status.FAIL, result.getThrowable());
-			// test.log(Status.,result.getName() + " is failed");
-
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			test = extent.createTest(result.getName());
-			test.log(Status.PASS, result.getName() + " is passed");
-		}
-		if (result.getStatus() == ITestResult.SKIP) {
-			// test.skip(MarkupHelper.createLabel(result.getName() + " test is Skipped",
-			// ExtentColor.AMBER));
-			test = extent.createTest(result.getName());
-			test.log(Status.SKIP, result.getName() + " is skipped");
-			test.log(Status.SKIP, result.getThrowable());
-		}
-	}
-
 	@DataProvider(name = "LoginDetails")
 	public static Object[][] getLoginDetails() {
 		return new Object[][] { { "mngr248511", "mUvAjeg", "Invalid" }, { "mngr248510", "mUvAjeg1", "Invalid" },
@@ -129,11 +130,9 @@ public class BaseTest {
 
 	@Test(dependsOnMethods = "login")
 	public static void validateHomePageTitle() throws IOException {
-		test = extent.createTest("Validating Home Page Title Test");
 		test.log(Status.INFO, "Validating Home Page Title");
 		Assert.assertEquals(objHomePage.getPageTitle(), "Guru99 Bank Manager HomePage", "HomePage Title doesn't match");
-		// test.log(Status.INFO, "Validate HomePage Title not matched");
-		// test.log(Status.PASS, "Home Page Title matched");
+		test.log(Status.INFO, "End of Validate HomePage Title Test");
 	}
 
 	@AfterSuite

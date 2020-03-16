@@ -2,65 +2,65 @@
 <testng-results ignored="1" total="4" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-03-15T09:03:54 IST" name="Default suite" finished-at="2020-03-15T09:05:11 IST" duration-ms="76327">
+  <suite started-at="2020-03-15T23:53:47 IST" name="Suite" finished-at="2020-03-15T23:54:10 IST" duration-ms="23327">
     <groups>
     </groups>
-    <test started-at="2020-03-15T09:03:54 IST" name="Default test" finished-at="2020-03-15T09:05:11 IST" duration-ms="76327">
+    <test started-at="2020-03-15T23:53:47 IST" name="test" finished-at="2020-03-15T23:54:10 IST" duration-ms="23327">
       <class name="tests.BaseTest">
-        <test-method is-config="true" signature="initializeResource()[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:03:49 IST" name="initializeResource" finished-at="2020-03-15T09:03:54 IST" duration-ms="5026" status="PASS">
+        <test-method is-config="true" signature="initializeResource()[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:53:41 IST" name="initializeResource" finished-at="2020-03-15T23:53:47 IST" duration-ms="5103" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeResource -->
-        <test-method signature="launchURL()[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:03:54 IST" name="launchURL" finished-at="2020-03-15T09:05:04 IST" duration-ms="69187" status="PASS">
+        <test-method signature="launchURL()[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:53:47 IST" name="launchURL" finished-at="2020-03-15T23:54:03 IST" duration-ms="16047" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchURL -->
-        <test-method is-config="true" signature="getStatus(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:04 IST" name="getStatus" finished-at="2020-03-15T09:05:04 IST" duration-ms="31" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:03 IST" name="afterMethod" finished-at="2020-03-15T23:54:03 IST" duration-ms="6" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=launchURL status=SUCCESS method=BaseTest.launchURL()[pri:0, instance:tests.BaseTest@1ffe63b9] output={null}]]]>
+                <![CDATA[[TestResult name=launchURL status=SUCCESS method=BaseTest.launchURL()[pri:0, instance:tests.BaseTest@12e61fe6] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getStatus -->
-        <test-method signature="login()[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:04 IST" name="login" finished-at="2020-03-15T09:05:11 IST" depends-on-methods="tests.BaseTest.launchURL" duration-ms="7044" status="PASS">
+        </test-method> <!-- afterMethod -->
+        <test-method signature="login()[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:03 IST" name="login" finished-at="2020-03-15T23:54:10 IST" depends-on-methods="tests.BaseTest.launchURL" duration-ms="7223" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method is-config="true" signature="getStatus(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:11 IST" name="getStatus" finished-at="2020-03-15T09:05:11 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:10 IST" name="afterMethod" finished-at="2020-03-15T23:54:10 IST" duration-ms="2" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=login status=SUCCESS method=BaseTest.login()[pri:0, instance:tests.BaseTest@1ffe63b9] output={null}]]]>
+                <![CDATA[[TestResult name=login status=SUCCESS method=BaseTest.login()[pri:0, instance:tests.BaseTest@12e61fe6] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getStatus -->
-        <test-method signature="validateHomePageTitle()[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:11 IST" name="validateHomePageTitle" finished-at="2020-03-15T09:05:11 IST" depends-on-methods="tests.BaseTest.login" duration-ms="17" status="PASS">
+        </test-method> <!-- afterMethod -->
+        <test-method signature="validateHomePageTitle()[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:10 IST" name="validateHomePageTitle" finished-at="2020-03-15T23:54:10 IST" depends-on-methods="tests.BaseTest.login" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validateHomePageTitle -->
-        <test-method is-config="true" signature="getStatus(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:11 IST" name="getStatus" finished-at="2020-03-15T09:05:11 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:10 IST" name="afterMethod" finished-at="2020-03-15T23:54:10 IST" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=validateHomePageTitle status=SUCCESS method=BaseTest.validateHomePageTitle()[pri:0, instance:tests.BaseTest@1ffe63b9] output={null}]]]>
+                <![CDATA[[TestResult name=validateHomePageTitle status=SUCCESS method=BaseTest.validateHomePageTitle()[pri:0, instance:tests.BaseTest@12e61fe6] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getStatus -->
-        <test-method is-config="true" signature="closeConnections()[pri:0, instance:tests.BaseTest@1ffe63b9]" started-at="2020-03-15T09:05:11 IST" name="closeConnections" finished-at="2020-03-15T09:05:12 IST" duration-ms="1681" status="PASS">
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="closeConnections()[pri:0, instance:tests.BaseTest@12e61fe6]" started-at="2020-03-15T23:54:10 IST" name="closeConnections" finished-at="2020-03-15T23:54:11 IST" duration-ms="1590" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeConnections -->
       </class> <!-- tests.BaseTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- test -->
+  </suite> <!-- Suite -->
 </testng-results>

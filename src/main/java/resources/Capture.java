@@ -16,16 +16,18 @@ import org.openqa.selenium.WebDriver;
 
 public class Capture {
 
-	public static void screenshot(WebDriver driver, String methodName) throws IOException {
+	public static String screenshot(WebDriver driver, String methodName) throws IOException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy_hh-mm-ss");
 		String	fileName = methodName.concat("_").concat(sdf.format(new Date())).concat(".png");
 		TakesScreenshot takeScreenshot = ((TakesScreenshot) driver);
 		File srcFile = takeScreenshot.getScreenshotAs(OutputType.FILE);
-		if(new File(ReadProperty.getScreenshotDirectory()).exists())
+		File targetDirectory = new File(ReadProperty.getScreenshotDirectory());
+		if(targetDirectory.isDirectory() && targetDirectory.listFiles().length>0)
 			copyScreenshotToArchiveFolder();			
 		File destFile = new File(ReadProperty.getScreenshotDirectory().concat(fileName));
 		FileUtils.copyFile(srcFile, destFile);
+		return destFile.toString();
 	}
 	public static void copyScreenshotToArchiveFolder() throws IOException {
 		Path srcDir = Paths.get(ReadProperty.getScreenshotDirectory());
